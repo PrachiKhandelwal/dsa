@@ -1,0 +1,32 @@
+/*
+Write a function to find the second largest element in an array
+*/
+
+const findSecondLargest = (arr) => {
+    if (arr.length < 2) {
+        return null;
+    }
+    let largest, secondLargest;
+    if (arr[0] > arr[1]) {
+        largest = arr[0];
+        secondLargest = arr[1];
+    } else {
+        largest = arr[1];
+        secondLargest = arr[0];
+    }
+    if (arr.length === 2) {
+        return secondLargest;
+    }
+    for (let i = 2; i < arr.length; i++) {
+        if (arr[i] > largest) {
+            secondLargest = largest;
+            largest = arr[i];
+        } else if (arr[i] > secondLargest) {
+            secondLargest = arr[i];
+        }
+    }
+    return secondLargest;
+};
+
+const res = findSecondLargest([6, 9, 12, -7, 4, 0, -4, 1, -1, 10]);
+console.log(res);
